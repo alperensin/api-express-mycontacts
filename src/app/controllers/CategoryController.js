@@ -20,6 +20,25 @@ class CategoryController {
 
     response.json(category);
   }
+
+  async store(request, response) {
+    // Criar novo registro
+    const { name } = request.body;
+
+    if (!name) {
+      return response.status(400).json({ error: 'Name is required' });
+    }
+
+    const categoryExists = await CategoriesRepository.findByName(name);
+
+    if (categoryExists) {
+      return response.status(400).json({ error: 'This category already exists' });
+    }
+
+    const category = await CategoriesRepository.create({ name });
+
+    response.json(category);
+  }
 }
 
 // Singleton

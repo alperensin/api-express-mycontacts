@@ -13,4 +13,5 @@ router.delete('/contacts/:id', ContactController.delete);
 
 router.get('/categories', CategoryController.index);
 router.get('/categories/:id', CategoryController.show);
+router.post('/categories', CategoryController.store);
 module.exports = router;

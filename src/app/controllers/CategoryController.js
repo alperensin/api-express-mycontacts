@@ -60,6 +60,16 @@ class CategoryController {
 
     response.json(category);
   }
+
+  async delete(request, response) {
+    // Deletar um registro
+    const { id } = request.params;
+
+    await CategoriesRepository.delete(id);
+
+    // 204: No Content
+    response.sendStatus(204);
+  }
 }
 
 // Singleton

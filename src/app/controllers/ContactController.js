@@ -6,9 +6,6 @@ class ContactController {
     const { orderBy } = request.query;
     const contacts = await ContactsRepository.findAll(orderBy);
 
-    // Wildcard -> Curinga -> *
-    // response.setHeader('Access-Control-Allow-Origin', '*');
-    response.setHeader('Access-Control-Allow-Origin', 'http://localhost:3000');
     response.json(contacts);
   }
 
